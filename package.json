@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "servor src/ index.html 1234 --reload",
     "build": "echo 'Build script'",
-    "deploy": "echo 'Deploy script'"
+    "deploy": "gh-pages -d src/"
   },
   "keywords": [],
   "author": "",
@@ -20,6 +20,7 @@
   },
   "type": "module",
   "devDependencies": {
+    "gh-pages": "^6.3.0",
     "servor": "^4.0.2",
     "vite": "^8.2.2"
   }
