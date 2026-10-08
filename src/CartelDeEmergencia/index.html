@@ -3,49 +3,80 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cartel de extintor</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
+  <title>Cartel de Seguridad - Extintor Clase A</title>
+  <link rel="stylesheet" href="index.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
-  <main class="cartel">
-    <h1 class="titulo">EXTINTOR</h1>
-    <p class="subtitulo">USELO UNICAMENTE EN FUEGO CLASE</p>
 
-    <!-- Triángulo verde con la letra A -->
-    <svg class="clase-a" viewBox="0 0 100 90" role="img" aria-label="Clase A">
-      <polygon points="50,8 93,82 7,82" fill="#fff" stroke="#1b7a2e" stroke-width="9" stroke-linejoin="round"/>
-      <text x="50" y="72" text-anchor="middle" font-size="50" font-weight="900" font-family="Arial Black, Arial, sans-serif" fill="#1b7a2e">A</text>
-    </svg>
+  <main class="sign-card">
+    <!-- Encabezado Principal -->
+    <header class="header-banner">
+      <h1>EXTINTOR</h1>
+    </header>
 
-    <!-- Icono azul: al pasar el mouse suena la alarma -->
-    <button class="icono-azul" type="button" aria-label="Sólidos combustibles. Pasa el mouse para oír la alarma">
-      <svg viewBox="0 0 100 100" aria-hidden="true">
-        <rect width="100" height="100" rx="12" fill="#1d3fa8"/>
-        <!-- Basurero -->
-        <rect x="16" y="34" width="32" height="7" rx="2" fill="#fff"/>
-        <path d="M19 43h26l-3 40H22z" fill="#fff"/>
-        <!-- Llamas del basurero -->
-        <path d="M20 32c-6-7 1-12-1-19 7 3 10 9 6 14 3-1 4-4 4-7 5 5 3 11-1 12z" fill="#fff"/>
-        <!-- Fogata -->
-        <path d="M66 72c-12-9-5-22 4-32 0 8 6 9 8 15 2-4 1-9-2-13 11 6 15 19 6 30z" fill="#fff"/>
-        <rect x="56" y="76" width="32" height="7" rx="3" fill="#fff" transform="rotate(-14 72 80)"/>
-        <rect x="56" y="76" width="32" height="7" rx="3" fill="#fff" transform="rotate(14 72 80)"/>
-      </svg>
-    </button>
+    <!-- Subtítulo -->
+    <p class="subtitle">ÚSELO ÚNICAMENTE EN FUEGO CLASE</p>
 
-    <p class="solidos">SOLIDOS COMBUSTIBLES</p>
-    <p class="ejemplos">madera, papel,<br>tela, basura<br>cartones</p>
+    <!-- Sección de Simbología -->
+    <section class="symbol-section">
+      <!-- Triángulo Verde Clase A -->
+      <div class="class-triangle" aria-label="Clase A">
+        <span>A</span>
+      </div>
 
-    <h2 class="metodo">METODO PARA UTILIZARLO</h2>
-    <ol class="pasos">
-      <li>Sosténgalo en posición vertical.</li>
-      <li>Retire el seguro.</li>
-      <li>Oprima la palanca.</li>
-      <li>Dirija la descarga contra la base de la llama.</li>
-    </ol>
+      <!-- Contenedor Interactivo con Sonido de Fuego -->
+      <div class="fire-icon-box" id="fireIcon" role="button" tabindex="0" title="Haz clic o pasa el cursor para escuchar el fuego">
+        <div class="icon-svg-wrapper">
+          <svg viewBox="0 0 100 100" class="fire-svg">
+            <!-- Basurero -->
+            <path class="bin-body" d="M30 45 L35 85 L65 85 L70 45 Z" fill="#ffffff" />
+            <path class="bin-rim" d="M26 40 L74 40 L72 45 L28 45 Z" fill="#ffffff" />
+            <!-- Llamas -->
+            <path class="flame flame-1" d="M38 40 Q32 25 42 15 Q46 28 50 32 Q54 22 62 18 Q58 32 62 40 Z" fill="#ffffff" />
+            <path class="flame flame-2" d="M62 42 Q70 30 78 35 Q74 48 65 52 Z" fill="#ffffff" />
+            <!-- Leña/Papel al lado -->
+            <rect x="68" y="72" width="22" height="6" rx="2" fill="#ffffff" transform="rotate(-15 79 75)" />
+            <rect x="68" y="78" width="22" height="6" rx="2" fill="#ffffff" transform="rotate(10 79 81)" />
+          </svg>
+        </div>
+        <div class="pulse-ring"></div>
+        <canvas id="fireCanvas" class="fire-canvas"></canvas>
+      </div>
 
-    <div class="franjas"></div>
+      <!-- Descripción de Combustibles -->
+      <div class="combustibles-info">
+        <strong>SÓLIDOS COMBUSTIBLES</strong>
+        <p>madera, papel,<br>tela, basura<br>cartones</p>
+      </div>
+    </section>
+
+    <!-- Sección del Método de Uso -->
+    <section class="instructions-section">
+      <h2>MÉTODO PARA UTILIZARLO</h2>
+      <ol class="steps-list">
+        <li><span class="step-num">1.</span> Sosténgalo en posición vertical.</li>
+        <li><span class="step-num">2.</span> Retire el seguro.</li>
+        <li><span class="step-num">3.</span> Oprima la palanca.</li>
+        <li><span class="step-num">4.</span> Dirija la descarga contra la base de la llama.</li>
+      </ol>
+    </section>
+
+    <!-- Franjas de Peligro Rojas (Inferior) -->
+    <footer class="hazard-stripes" aria-hidden="true">
+      <div class="stripe"></div>
+      <div class="stripe"></div>
+      <div class="stripe"></div>
+    </footer>
   </main>
+
+  <!-- Indicador Interactivo -->
+  <div class="audio-hint">
+    <span>Haz clic o mantén el cursor sobre el ícono de basura/fuego para escuchar la simulación</span>
+  </div>
+
+  <script src="index.js"></script>
 </body>
 </html>
